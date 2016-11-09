@@ -6,6 +6,7 @@ source=$1
 template=$2
 folder=$3
 ext=$4
+type=$5
 
 mkdir -p $folder
 
@@ -13,4 +14,4 @@ while read -r line
 do
   parts=(${line//:/ })
   python generate.py $source $template --re-fields ${parts[1]} > $folder/${parts[0]}$ext
-done < filenames.txt
+done < filenames_$type.txt
